@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.klfront.klblog.dao.BookMapper">
+  <resultMap id="BaseResultMap" type="com.klfront.klblog.entity.Book">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="cover" jdbcType="VARCHAR" property="cover" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="original_author" jdbcType="VARCHAR" property="originalAuthor" />
+    <result column="publisher" jdbcType="VARCHAR" property="publisher" />
+    <result column="translator" jdbcType="VARCHAR" property="translator" />
+    <result column="published_date" jdbcType="VARCHAR" property="publishedDate" />
+    <result column="pages" jdbcType="INTEGER" property="pages" />
+    <result column="price" jdbcType="FLOAT" property="price" />
+    <result column="ISBN" jdbcType="VARCHAR" property="isbn" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, cover, `name`, original_author, publisher, translator, published_date, pages, 
+    price, ISBN
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from book
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from book
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.klfront.klblog.entity.Book" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into book (cover, `name`, original_author, 
+      publisher, translator, published_date, 
+      pages, price, ISBN)
+    values (#{cover,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{originalAuthor,jdbcType=VARCHAR}, 
+      #{publisher,jdbcType=VARCHAR}, #{translator,jdbcType=VARCHAR}, #{publishedDate,jdbcType=VARCHAR}, 
+      #{pages,jdbcType=INTEGER}, #{price,jdbcType=FLOAT}, #{isbn,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.klfront.klblog.entity.Book" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into book
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cover != null">
+        cover,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="originalAuthor != null">
+        original_author,
+      </if>
+      <if test="publisher != null">
+        publisher,
+      </if>
+      <if test="translator != null">
+        translator,
+      </if>
+      <if test="publishedDate != null">
+        published_date,
+      </if>
+      <if test="pages != null">
+        pages,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="isbn != null">
+        ISBN,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cover != null">
+        #{cover,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="originalAuthor != null">
+        #{originalAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="publisher != null">
+        #{publisher,jdbcType=VARCHAR},
+      </if>
+      <if test="translator != null">
+        #{translator,jdbcType=VARCHAR},
+      </if>
+      <if test="publishedDate != null">
+        #{publishedDate,jdbcType=VARCHAR},
+      </if>
+      <if test="pages != null">
+        #{pages,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=FLOAT},
+      </if>
+      <if test="isbn != null">
+        #{isbn,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.klfront.klblog.entity.Book">
+    <!--@mbg.generated-->
+    update book
+    <set>
+      <if test="cover != null">
+        cover = #{cover,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="originalAuthor != null">
+        original_author = #{originalAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="publisher != null">
+        publisher = #{publisher,jdbcType=VARCHAR},
+      </if>
+      <if test="translator != null">
+        translator = #{translator,jdbcType=VARCHAR},
+      </if>
+      <if test="publishedDate != null">
+        published_date = #{publishedDate,jdbcType=VARCHAR},
+      </if>
+      <if test="pages != null">
+        pages = #{pages,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=FLOAT},
+      </if>
+      <if test="isbn != null">
+        ISBN = #{isbn,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.klfront.klblog.entity.Book">
+    <!--@mbg.generated-->
+    update book
+    set cover = #{cover,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      original_author = #{originalAuthor,jdbcType=VARCHAR},
+      publisher = #{publisher,jdbcType=VARCHAR},
+      translator = #{translator,jdbcType=VARCHAR},
+      published_date = #{publishedDate,jdbcType=VARCHAR},
+      pages = #{pages,jdbcType=INTEGER},
+      price = #{price,jdbcType=FLOAT},
+      ISBN = #{isbn,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

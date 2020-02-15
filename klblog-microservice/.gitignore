@@ -1,0 +1,6 @@
+/config-server/target
+/blog-provider/target
+/blog-consumer/target
+target
+/.idea
+/*.log

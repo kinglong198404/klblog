@@ -1,0 +1,31 @@
+server:
+  port: 8092
+  
+spring:
+   application:
+    name: robot-consumer
+  
+feign: 
+  hystrix: 
+    enabled: true
+    
+ribbon:
+  ReadTimeout: 10000  
+  ConnectTimeout: 10000 
+  
+hystrix:
+  command: 
+      default:
+        execution:
+          isolation:
+            thread:
+              timeoutInMilliseconds: 10000
+
+eureka:
+  instance:
+    instance-id: robot-consumer-8092			 			#服务实例id，在eureka服务列表中Status处显示。微服务负载均衡的多个实例以此区分
+    prefer-ip-address: true      							#访问路径可以显示IP地址
+#  在bootstrap中通过configserver配置
+#  client:
+#    service-url:
+#     defaultZone: http://eureka8761.com:8761/eureka/,http://eureka8762.com:8762/eureka/

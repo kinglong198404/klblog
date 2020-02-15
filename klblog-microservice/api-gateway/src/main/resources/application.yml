@@ -1,0 +1,30 @@
+server:
+  port: 82
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          # lowerCaseServiceId: true
+      routes:
+        - id: consumer-route
+         # uri: lb://article-consumer
+          uri: http://localhost:8091
+          predicates:
+            - Path=/consumer/**
+          filters:
+            - StripPrefix=1
+        - id: robot-consumer-route
+          uri: http://localhost:8092
+          predicates:
+            - Path=/robot-consumer/**
+          filters:
+            - StripPrefix=1
+eureka:
+  instance:
+    instance-id: api-gateway			 			#服务实例id，在eureka服务列表中Status处显示。微服务负载均衡的多个实例以此区分
+    prefer-ip-address: true      							#访问路径可以显示IP地址

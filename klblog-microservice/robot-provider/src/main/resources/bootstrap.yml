@@ -1,0 +1,8 @@
+#bootstrap.yml优先级高于application.yml,该文件中没有的配置，仍旧从application.yml读取
+spring: 
+  cloud: 
+    config: 
+      name: base,datasource_robot
+      profile: dev
+      label: develop
+      uri: http://klfront.com:8888 #config-server的地址

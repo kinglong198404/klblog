@@ -1,0 +1,33 @@
+spring:
+  profiles:
+    active:
+      - dev
+---
+spring:
+  profiles: dev
+eureka:
+  profiles: dev		#开发环境
+  client: #客户端注册进eureka服务列表内
+    service-url:
+      defaultZone: http://localhost:8761/eureka/,http://localhost:8762/eureka/
+
+---
+spring:
+  profiles: test
+eureka:
+  profiles: test   #测试环境
+  client:
+    service-url:
+      defaultZone: http://test.yourdomain.com:8761/eureka/,http://test.yourdomain.com:8762/eureka/
+
+---
+spring:
+  profiles: prod
+eureka:
+  profiles: prod   #生产环境
+  client:
+    service-url:
+      defaultZone: http://www.yourdomain.com:8761/eureka/,http://www.yourdomain.com:8762/eureka/
+
+
+

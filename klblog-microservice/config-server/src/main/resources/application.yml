@@ -1,0 +1,14 @@
+server: 
+  port: 8888
+  
+spring:
+  application:
+    name:  klblog-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: http://git.klfront.com/klblog/klblog-microservice.git #GitHub上面的git仓库名字
+          search-paths: config-repo
+          username: kinglong
+          password: kl186509

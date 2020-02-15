@@ -1,0 +1,27 @@
+server:
+  port: 8091
+  
+spring:
+   application:
+    name: blog-consumer
+  
+feign: 
+  hystrix: 
+    enabled: true
+    
+ribbon:
+  ReadTimeout: 10000  
+  ConnectTimeout: 10000 
+  
+hystrix:
+  command: 
+      default:
+        execution:
+          isolation:
+            thread:
+              timeoutInMilliseconds: 10000 
+      
+eureka:
+  client:
+    service-url: 
+     defaultZone: http://eureka8761.com:8761/eureka/,http://eureka8762.com:8762/eureka/

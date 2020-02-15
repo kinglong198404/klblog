@@ -1,0 +1,24 @@
+server:
+  port: 8062
+  
+spring:
+   application:
+    name: robot-provider									#微服务名，唯一标识一个服务
+   zipkin:
+    enabled: true
+    base-url: http://localhost:9000
+   sleuth:
+    sampler:
+     percentage: 1
+   #datasource配置 通过config 从gitlab获取
+
+eureka: 
+  instance:
+    instance-id: robot-provider-8062			 			#服务实例id，在eureka服务列表中Status处显示。微服务负载均衡的多个实例以此区分
+    prefer-ip-address: true      							#访问路径可以显示IP地址
+ 
+info: 
+  app.name: robot_provider_info
+  company.name: www.klfront.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
